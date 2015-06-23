@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calendarDemoApp" id="top">
+<head>
+    <title>AngularUI Calendar for AngularJS</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="../bower_components/bootstrap-css/css/bootstrap.css" />
+    <link rel="stylesheet" href="../bower_components/fullcalendar/dist/fullcalendar.css">
+    <link rel="stylesheet" href="calendarDemo.css" />
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js"></script>
+    <script src="../bower_components/moment/moment.js"></script>
+    <script src="../bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script src="../bower_components/fullcalendar/dist/gcal.js"></script>
+    <script src="../src/calendar.js"></script>
+    <script src="calendarDemo.js"></script>
+</head>
+<body data-spy="scroll">
+<div role="main">
+    <div class="container">
+        <section id="directives-calendar" ng-controller="CalendarCtrl">
+            <div class="page-header">
+                <h1>Sleeper Shifts</h1>
+            </div>
+            <select ng-model="selectedFirefighter">
+                <option name="firefighter" ng-repeat="(key, value) in people" value="{{key}}">{{value.name}}</option>
+            </select>
+            <button type="button" class="btn btn-primary" ng-click="addEvent()">
+                Add Yourself
+            </button>
+            <div class="well">
+                <div class="row-fluid">
+                    <div ui-calendar="uiConfig.calendar" class="span12 calendar" ng-model="eventSources"></div>
+                </div>
+                <br />
+            </div>
+            <div>
+                <h1>Current Shifts</h1>
+                <ul class="unstyled">
+                    <li ng-repeat="e in events">
+                        <div class="alert alert-info">
+                            <a class="close" ng-click="remove($index)"><i class="icon-remove"></i></a>
+                            <b> <input ng-model="e.title" ng-disabled="true"></b>
+                            {{e.start | date:"MMM dd"}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    </body>
+</html>
