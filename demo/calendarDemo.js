@@ -1,4 +1,4 @@
-/**
+/*
  * calendarDemoApp - 0.9.0
  */
 angular.module('calendarDemoApp', ['ui.calendar', 'ui.bootstrap']);
@@ -21,12 +21,9 @@ function CalendarCtrl($scope,$compile,uiCalendarConfig) {
         {title: 'Dave - Driver',start: new Date(y, m, d + 1, 18, 0),end: new Date(y, m, d + 1, 22, 30),allDay: true, url: 'http://google.com/'},
         {title: 'Susan - EMT',start: new Date(y, m, d + 1, 18, 0),end: new Date(y, m, d + 1, 22, 30),allDay: true, url: 'http://google.com/'},
         {title: 'Jeff - Driver',start: new Date(y, m, d + 1, 18, 0),end: new Date(y, m, d + 1, 22, 30),allDay: true, url: 'http://google.com/'}
-
 /*      {title: 'All Day Event',start: new Date(y, m, 1)},
       {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
       {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
-      {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
       {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}*/
     ];
     /* event source that calls a function on every view switch */
@@ -72,13 +69,15 @@ function CalendarCtrl($scope,$compile,uiCalendarConfig) {
         sources.push(source);
       }
     };
-
+    
+    // TODO: Database of course
     $scope.people =
         [
             { id: 1, name: "Dave" },
             { id: 2, name: "Bill" },
             { id: 3, name: "Sue" },
-            { id: 4, name: "Bob" }
+            { id: 4, name: "Bob" },
+            { id: 4, name: "Jim" }
         ];
 
     /* add custom event*/
@@ -147,6 +146,7 @@ function CalendarCtrl($scope,$compile,uiCalendarConfig) {
         $scope.changeTo = 'Hungarian';
       }
     };
+
     /* event sources array*/
     $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
     $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
